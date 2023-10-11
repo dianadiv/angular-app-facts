@@ -15,28 +15,9 @@ export class ContentListComponent implements OnInit {
     private factsService: ContentService,
   ) {}
 
-  // ngOnInit(): void {
-  //   this.factsService.fetchData()
-  //     .subscribe(res => {
-  //       const { data } = res;
-  //       const newData = [];
-  //       for (let i = 0; i < data.length; i++) {
-  //         newData.push({
-  //           title: data[i],
-  //           likes: Math.trunc(Math.random() * 100)
-  //         })
-  //       }
-  //       this.facts = newData;
-  //     })
-  // }
-
   ngOnInit(): void {
     this.factsService.fetchData()
       .subscribe(res => {
-        if (localStorage.getItem('cachedData')) {
-          return;
-        }
-
         const { data } = res;
         const newData = [];
         for (let i = 0; i < data.length; i++) {
@@ -45,11 +26,10 @@ export class ContentListComponent implements OnInit {
             likes: Math.trunc(Math.random() * 100)
           })
         }
-
-        localStorage.setItem('cachedData', JSON.stringify(newData));
         this.facts = newData;
       })
   }
+
 
   handleLike(fact: Fact) {
     this.facts = this.facts.map(item => item === fact ? { ...item, likes: item.likes + 1 } : item)

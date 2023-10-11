@@ -16,25 +16,22 @@ export class ContentService {
 
   constructor(private http: HttpClient) {}
 
-  // fetchData(): Observable<any> {
-  //   const cachedData = localStorage.getItem(this.dataKey);
-
-  //   if (cachedData) {
-  //     return new Observable((observer) => {
-  //       observer.next(JSON.parse(cachedData));
-  //       observer.complete();
-  //     });
-  //   } else {
-  //     return this.http.get(this.url).pipe(
-  //       tap(data => {
-  //         localStorage.setItem('cachedData', JSON.stringify(data));
-  //         return data;
-  //       })
-  //     );
-  //   }
-  // }
-
   fetchData(): Observable<any> {
-    return this.http.get(this.url)
+    const cachedData = localStorage.getItem(this.dataKey);
+
+    if (cachedData) {
+      return new Observable((observer) => {
+        observer.next(JSON.parse(cachedData));
+        observer.complete();
+      });
+    } else {
+      return this.http.get(this.url).pipe(
+        tap(data => {
+          localStorage.setItem('cachedData', JSON.stringify(data));
+          return data;
+        })
+      );
+    }
   }
+
 }

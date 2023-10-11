@@ -8,13 +8,17 @@ import { ContentListComponent } from './components/content-list/content-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ItemComponent } from './components/item/item.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ContentListComponent,
-    ItemComponent
+    ItemComponent,
+    MainContentComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
