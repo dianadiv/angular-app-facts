@@ -1,12 +1,32 @@
 <li class="box content has-text-weight-bold is-flex is-justify-content-space-between">
-  <div class="title-block">{{fact.title}}</div>
+  <div class="title-block" *ngIf="!editing; else elseBlock">{{fact.title}}</div>
+  <ng-template #elseBlock>
+    <form class="title-block" (ngSubmit)="save()">
+      <input
+        #field
+        class="input"
+        type="text"
+        name="value"
+        placeholder="Text input"
+        [(ngModel)]="value"
+        (keyup.escape)="editing = false"
+        (blur)="save()"
+      >
+    </form>
+  </ng-template>
 
   <div class="buttons">
-    <button class="button button-styled is-danger is-flex is-justify-content-space-between">
+    <button
+      class="button button-styled is-danger is-flex is-justify-content-space-between"
+      (click)="like.emit(fact)"
+    >
       <fa-icon [icon]="faHeart"></fa-icon>
       <span>{{fact.likes}}</span>
     </button>
-    <button class="button is-link">
+    <button
+      class="button is-link"
+      (click)="edit()"
+    >
       <fa-icon [icon]="faPencil"></fa-icon>
     </button>
   </div>

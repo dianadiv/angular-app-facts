@@ -11,6 +11,8 @@ import { ItemComponent } from './components/item/item.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FormComponent } from './components/form/form.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +20,15 @@ import { FormComponent } from './components/form/form.component';
     ContentListComponent,
     ItemComponent,
     MainContentComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,4 +34,8 @@ export class ContentListComponent implements OnInit {
   handleLike(fact: Fact) {
     this.facts = this.facts.map(item => item === fact ? { ...item, likes: item.likes + 1 } : item)
   }
+
+  handleAdd(title: string) {
+    this.facts.unshift({ title, likes : 0});
+  }
 }

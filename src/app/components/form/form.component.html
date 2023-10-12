@@ -1,14 +1,24 @@
 <section >
- <form>
+ <form (submit)="addValue()">
     <h1 class="title">Add new fact</h1>
     <div class="field">
       <label class="label">Fact</label>
       <div class="control">
-        <input class="input" type="text" placeholder="Type text for new fact">
+        <input
+          class="input"
+          [class.is-danger]="title.errors && title.dirty"
+          type="text"
+          name="newFact"
+          placeholder="Type text for new fact"
+          [formControl]="title"
+        >
       </div>
     </div>
     <div class="control">
-      <button class="button is-link">Add</button>
+      <button
+        class="button is-link"
+        [disabled]="!title.valid"
+      >Add</button>
     </div>
  </form>
 </section>
