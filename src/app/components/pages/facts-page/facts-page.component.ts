@@ -5,8 +5,8 @@ import { Fact } from 'src/app/types/facts';
 
 @Component({
   selector: 'app-content-list',
-  templateUrl: './content-list.component.html',
-  styleUrls: ['./content-list.component.scss']
+  templateUrl: './facts-page.component.html',
+  styleUrls: ['./facts-page.component.scss']
 })
 export class ContentListComponent implements OnInit {
   facts: Fact[] = [];
